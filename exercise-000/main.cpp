@@ -13,6 +13,6 @@ int main(int argc, char **argv) {
     fmt::print("Hello, {}!\n", tea::PROJECT_NAME);
 
     /* INSERT YOUR CODE HERE */
-
+    int variable = 0;
     return 0; /* exit gracefully*/
 }
