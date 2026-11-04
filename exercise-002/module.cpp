@@ -45,4 +45,22 @@ void doSomethingStatic()
     static int value = 56;
     value = value + 1;
     fmt::print("doSomethingStatic, value {}\n", value);
+    fmt::print("doSomethingStatic, adress: {}\n", fmt::ptr(&value));
+}
+
+
+// Teil 2:
+static int moduleVariable = 123;
+static int moduleCounter;
+void staticVariables()
+{
+    fmt::print("moduleVariable: \n     address: {}\n       value: {}\n", fmt::ptr(&moduleVariable), moduleVariable);
+    fmt::print("mduleCounter: \n     address: {}\n       value: {}\n", fmt::ptr(&moduleCounter), moduleCounter);
+}
+
+// Teil 3:
+static const int moduleConst = 77;
+void staticConstVariables()
+{
+    fmt::print("moduleConst: \n    address: {}\n    value: {}", fmt::ptr(&moduleConst), moduleConst);
 }

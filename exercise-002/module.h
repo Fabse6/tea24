@@ -19,6 +19,8 @@ int* doReturnAPtr();
 
 void doSomethingStatic();
 
+void staticVariables();
 
+void staticConstVariables();
 
 #endif
