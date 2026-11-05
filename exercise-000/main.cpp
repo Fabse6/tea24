@@ -84,3 +84,12 @@ void changeValueByReference(int& ref) {
     ref += 10;
     fmt::println("[changeValueByReference] Wert von Value: {}",ref);
 }
+
+/*
+RAM (xrw) 
+            x: executable
+            r: readable
+            w: writable
+
+ROM (rx) --> readable und executable
+*/
