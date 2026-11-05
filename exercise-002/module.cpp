@@ -1,0 +1,80 @@
+#include "module.h"
+#include "bonus_config.h"
+
+#include <fmt/format.h>
+
+/* .bss Segment */
+int foo;
+int foo2 = 0;
+
+/* .data Segment */
+int data = 45;
+int data2 = 43;
+
+/* .rodata Segment */
+
+const int rodata = 45;
+const int rodata2 = 43;
+
+const int big_data_blob[] = {42,0xff};
+
+void doSomething(int value)
+{
+    value = value + 1;
+    fmt::print("doSomething, value {}\n", value);
+}
+
+void doSomethingPtr(int* ptr)
+{
+    *ptr = *ptr + 1;
+    fmt::print("doSomethingPtr, value {}\n", *ptr);
+}
+
+int* doReturnAPtr()
+{
+    int value = 4711;
+    fmt::print("doReturnAPtr, value {}\n", value);
+    /* 
+     * This causes a warning and shall be avoided by all means
+     * warning: address of stack memory associated with local variable 'value' returned [-Wreturn-stack-address]
+     */
+    return &value;
+}
+
+void doSomethingStatic()
+{
+    static int value = 56;
+    value = value + 1;
+    fmt::print("doSomethingStatic, value {}\n", value);
+    fmt::print("doSomethingStatic, adress: {}\n", fmt::ptr(&value));
+}
+
+
+// Teil 2:
+static int moduleVariable = 123;
+static int moduleCounter;
+void staticVariables()
+{
+    fmt::print("moduleVariable: \n     address: {}\n       value: {}\n", fmt::ptr(&moduleVariable), moduleVariable);
+    fmt::print("mduleCounter: \n     address: {}\n       value: {}\n", fmt::ptr(&moduleCounter), moduleCounter);
+}
+
+// Teil 3:
+static const int moduleConst = 77;
+void staticConstVariables()
+{
+    fmt::print("moduleConst: \n    address: {}\n    value: {}", fmt::ptr(&moduleConst), moduleConst);
+}
+
+// Bonus 1:
+static int shadow = 11;
+void showShadow()
+{
+    fmt::print("shadow in module: address: {} \n        value: {}\n", fmt::ptr(&shadow), shadow);
+}
+// Bonus 2:
+void printBonus2()
+{
+    fmt::println("Bonus Config Variable: address: {}", fmt::ptr(&test));
+    fmt::println("Fehler ohne IncludeGuard: /workspaces/tea24/exercise-002/bonus_config.h:3:5: note: unguarded header; consider using #ifdef guards or #pragma once 3 | int test = 99; ^1 error generated.");
+}
