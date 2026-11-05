@@ -1,5 +1,7 @@
 #include <stdint.h>
 
+#include "bonus_config.h"
+
 #ifndef WORKSPACES_TEA22_EXERCISE_003_MODULE_H
 #define WORKSPACES_TEA22_EXERCISE_003_MODULE_H
 
@@ -22,5 +24,8 @@ void doSomethingStatic();
 void staticVariables();
 
 void staticConstVariables();
+void showShadow();
+
+void printBonus2();
 
 #endif

@@ -1,4 +1,5 @@
 #include "module.h"
+#include "bonus_config.h"
 
 #include <fmt/format.h>
 
@@ -63,4 +64,17 @@ static const int moduleConst = 77;
 void staticConstVariables()
 {
     fmt::print("moduleConst: \n    address: {}\n    value: {}", fmt::ptr(&moduleConst), moduleConst);
+}
+
+// Bonus 1:
+static int shadow = 11;
+void showShadow()
+{
+    fmt::print("shadow in module: address: {} \n        value: {}\n", fmt::ptr(&shadow), shadow);
+}
+// Bonus 2:
+void printBonus2()
+{
+    fmt::println("Bonus Config Variable: address: {}", fmt::ptr(&test));
+    fmt::println("Fehler ohne IncludeGuard: /workspaces/tea24/exercise-002/bonus_config.h:3:5: note: unguarded header; consider using #ifdef guards or #pragma once 3 | int test = 99; ^1 error generated.");
 }

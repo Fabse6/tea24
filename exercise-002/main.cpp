@@ -1,7 +1,13 @@
 #include <fmt/chrono.h>
 #include <fmt/format.h>
 
+// Bonus 2:
+#include "bonus_config.h"
+
 #include "module.h"
+
+// global values
+int shadow = 99;
 
 auto main(int argc, char** argv) -> int
 {
@@ -32,6 +38,33 @@ auto main(int argc, char** argv) -> int
     doSomethingStatic();
     staticVariables();
     staticConstVariables();
+
+
+    fmt::print("\n\n\nBonus 1:\n\n");
+
+    showShadow();
+    
+    fmt::print("shadow in main.cpp: address: {}\n       value{}\n", fmt::ptr(&shadow), shadow);
+
+    /*
+    Beobachtung: 
+        .data: 16392 bis 16432
+        .bss:  16432 bis 16448
+        .rodata: 8192 bis 8660
+        shadow (main): 0x55aca22a8018
+        shadow (module): 0x55aca22a802c
+
+        --> Resulatat: trotz gleichem Namen erhalten die Variablen unterschiedliche Adressen und kommen 
+            sich nicht in die Quere
+    */
+
+
+    fmt::print("\n\n\nBonus 2:\n\n");
+
+    printBonus2();
+    // Fehlermeldung ohne IncludeGuard: : '/workspaces/tea24/exercise-002/bonus_config.h' included multiple times, additional include site here
+    
+
     return 0; /* exit gracefully*/
 }
 
@@ -85,4 +118,12 @@ auto main(int argc, char** argv) -> int
  * .data und const int d = 1 typischerweise in .rodata. Die genaue Zuordnung
  * haengt von Compiler, Plattform, Linker und Nutzbarkeit des Symbols ab;
  * deshalb prueft man sie mit size/nm statt sie als universell anzunehmen.
+ * 
+ * 
+ * Beliebte Klausurfrage: Wie groß ist das .bss und auf welcher adressse liegt es?
+ * --> Antwort: Gegeben ist immer der Startwert und wie groß .bss ist --> Grenzen: Startwert; Startwert plus Größe
+ * 
+ * RISC vs CISC: 
+ *  RISC: Reduced Instruction Set Computer --> kleinerer Befehlssatz, dafür benötigen die einzelnen Befehle meist nur ein Taktzyklus
+ *  CISC: Complex Instruction Set Computer --> viele komplexe einzelne Befehle, dafür dauert ein Befehl meist mehrere Taktzyklen 
  */
