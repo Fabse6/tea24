@@ -29,3 +29,18 @@ std::string fullVersion()
            std::to_string(minor()) + "." +
            std::to_string(patch());
 }
+
+bool isAtLeast(int requiredMajor, int requiredMinor, int requiredPatch)
+{
+    if (major() != requiredMajor)
+    {
+        return major() > requiredMajor;
+    }
+
+    if (minor() != requiredMinor)
+    {
+        return minor() > requiredMinor;
+    }
+
+    return patch() >= requiredPatch;
+}
