@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.10.2)
 
 # Set the project name to your project name, template isn't very descriptive
-project (tea24)
+project (tea24 VERSION 0.0.1)
 
 # Conditionally turn on/off parts of the build (global-level)
 option(BUILD_TESTS "Build unit tests" ON)
@@ -67,4 +67,6 @@ add_subdirectory(exercise-002)
 # templates
 #add_subdirectory(templates)
 
-
+#exercise-003
+add_subdirectory(libs/version)
+add_subdirectory(exercise-003)
