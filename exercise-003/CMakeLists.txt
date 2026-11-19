@@ -57,3 +57,12 @@ target_link_libraries(version_tests
 if(BUILD_TESTS)
     add_test(NAME version_tests COMMAND version_tests)
 endif()
+
+# Solution-004
+
+add_executable(exercise-003-static main.cpp)
+target_link_libraries(exercise-003-static PRIVATE version fmt::fmt-header-only)
+
+add_executable(exercise-003-full-static main.cpp)
+target_link_libraries(exercise-003-full-static PRIVATE version fmt::fmt-header-only)
+target_link_options(exercise-003-full-static PRIVATE -static)

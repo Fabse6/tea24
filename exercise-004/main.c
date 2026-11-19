@@ -1,10 +1,15 @@
-#include <stdio.h>
-#include "greet.h"
+#include <stdio.h>   // stdio.h stellt unter anderem putc und stdout bereit.
+#include "greet.h"   // Eigener Header: Hier wird das Makro ZEICHEN definiert.
 
-/* Teil A: Dieses C-Programm wird fuer die vier Stufen verwendet. */
 int main(void)
 {
+    /*
+     * Teil-A-Loesung:
+     * Der Praeprozessor ersetzt das Makro ZEICHEN durch 'A'.
+     * putc schreibt dieses Zeichen auf stdout.
+     */
     putc(ZEICHEN, stdout);
     putc('\n', stdout);
+
     return 0;
 }
