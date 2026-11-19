@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-#include "version/version.h"
-#include "version/version_config.h"
-=======
 #include <version/version.h>
 #include <version_config.h>
 #include <string>
->>>>>>> solution-003
 
 const char* projectName()
 {
