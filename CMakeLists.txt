@@ -70,4 +70,6 @@ add_subdirectory(exercise-004)
 # templates
 #add_subdirectory(templates)
 
-
+#exercise-003
+add_subdirectory(libs/version)
+add_subdirectory(exercise-003)
